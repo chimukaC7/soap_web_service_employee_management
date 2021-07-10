@@ -5,7 +5,8 @@
         elementFormDefault="qualified">
 
     <element name="GetEmployeeRequest"
-             type="tns:GetEmployeeRequest"></element>
+             type="tns:GetEmployeeRequest">
+    </element>
 
     <element name="GetEmployeeResponse"
              type="tns:GetEmployeeResponse">
@@ -13,7 +14,8 @@
 
     <complexType name="GetEmployeeRequest">
         <sequence>
-            <element name="employeeId" type="int"></element>
+            <element name="employeeId" type="int">
+            </element>
         </sequence>
     </complexType>
 
@@ -30,21 +32,21 @@
 
     <complexType name="RemoveEmployeeRequest">
         <sequence>
-            <element name="employeeId" type="int"></element>
+            <element name="employeeId" type="int">
+            </element>
         </sequence>
     </complexType>
 
     <complexType name="EmployeeDetails">
         <sequence>
-            <element name="employeeId" type="int"></element>
-            <element name="employeeName" type="string"></element>
-            <element name="location" type="string"></element>
-            <element name="pincode" type="int"></element>
+            <element name="employeeId" type="int"/>
+            <element name="employeeName" type="string"/>
+            <element name="location" type="string"/>
+            <element name="pincode" type="int"/>
         </sequence>
     </complexType>
 
-    <element name="GetAllEmployeeRequest"
-             type="tns:GetAllEmployeeRequest">
+    <element name="GetAllEmployeeRequest" type="tns:GetAllEmployeeRequest">
     </element>
 
     <complexType name="GetAllEmployeeRequest">
@@ -58,7 +60,9 @@
 
     <complexType name="GetAllEmployeeResponse">
         <sequence>
-            <element name="EmployeeDetails" type="tns:EmployeeDetails" maxOccurs="unbounded"></element>
+            <element name="EmployeeDetails" type="tns:EmployeeDetails" maxOccurs="unbounded">
+
+            </element>
         </sequence>
     </complexType>
 
@@ -68,7 +72,9 @@
 
     <complexType name="RemoveEmployeeResponse">
         <sequence>
-            <element name="status" type="boolean"></element>
+            <element name="status" type="boolean">
+
+            </element>
         </sequence>
     </complexType>
 </schema>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OfflineRepository {
+
     public static List<Employee> getEmployees() {
         List<Employee> empList = new ArrayList<>();
         empList.add(new Employee(123, "Arun", "Chennai", 12345));
@@ -13,4 +14,5 @@ public class OfflineRepository {
         empList.add(new Employee(127, "Nancy", "Chennai", 2345));
         return empList;
     }
+
 }

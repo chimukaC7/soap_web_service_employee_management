@@ -23,8 +23,10 @@ public class EndPointConfiguration {
     @ResponsePayload
     public JAXBElement<GetEmployeeResponse> getEmployee(@RequestPayload GetEmployeeRequest request){
         GetEmployeeResponse response = new GetEmployeeResponse();
+
         Employee employee = services.getEmployee(request.getEmployeeId());
         response.setEmployeeDetails(mapEmployee(employee));
+
         return new ObjectFactory().createGetEmployeeResponse(response);
     }
 
@@ -32,6 +34,7 @@ public class EndPointConfiguration {
     @ResponsePayload
     public JAXBElement<GetAllEmployeeResponse> getAllEmployees(@RequestPayload GetAllEmployeeRequest request){
         GetAllEmployeeResponse response = new GetAllEmployeeResponse();
+
         List<EmployeeDetails> allEmployeeDetail = services.getAllEmployees()
                 .stream().map(emp -> mapEmployee(emp))
                 .collect(Collectors.toList());
@@ -44,8 +47,10 @@ public class EndPointConfiguration {
     @ResponsePayload
     public JAXBElement<RemoveEmployeeResponse> removeEmployee(@RequestPayload RemoveEmployeeRequest request){
         RemoveEmployeeResponse response = new RemoveEmployeeResponse();
+
         boolean status = services.removeEmployee(request.getEmployeeId());
         response.setStatus(status);
+
         return new ObjectFactory().createRemoveEmployeeResponse(response);
     }
 

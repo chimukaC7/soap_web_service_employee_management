@@ -22,23 +22,28 @@ import java.util.List;
 @EnableWs
 @Configuration
 public class WSDLConfigService  extends  WsConfigurerAdapter{
-    // Request Handler - Servlet -> ServletRegistration Bean -> MessageServelt
+    // Request Handler - Servlet -> ServletRegistration Bean -> MessageServlet
     // URL /soap/*
 
     @Bean
     public ServletRegistrationBean requestDispatcher(ApplicationContext context){
+        //you can register all the requests and responses
+
+        //to identify the methods to endpoints
         MessageDispatcherServlet mds = new MessageDispatcherServlet();
         mds.setApplicationContext(context);
         mds.setTransformWsdlLocations(true);
         return new ServletRegistrationBean(mds , "/soap/*");
     }
 
+
     @Bean
     public XsdSchema employeeSchema(){
         return new SimpleXsdSchema(new ClassPathResource("employee.xsd"));
     }
 
-    @Bean(name="empservice")
+    //to help us create the wsdl
+    @Bean(name="empservice")//add the endpoint
     public DefaultWsdl11Definition createWsdl(XsdSchema schema){
         DefaultWsdl11Definition wsdl = new DefaultWsdl11Definition();
         wsdl.setPortTypeName("EmployeePort");

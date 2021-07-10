@@ -11,6 +11,7 @@ import java.util.Optional;
 @Component
 public class EmployeeServiceImpl {
     List<Employee> listOfEmployees = OfflineRepository.getEmployees();
+
     public Employee getEmployee(int employeeId) {
         Optional<Employee> employee = listOfEmployees.stream()
                 .filter(emp -> emp.getEmployeeId() == employeeId)
@@ -24,13 +25,17 @@ public class EmployeeServiceImpl {
 
     public boolean removeEmployee(int employeeId) {
         Iterator<Employee> iterator = listOfEmployees.iterator();
+
         while (iterator.hasNext()){
             Employee emp = iterator.next();
+
             if(employeeId == emp.getEmployeeId()){
                 iterator.remove();
                 return true;
             }
+
         }
+
         return false;
     }
 }
